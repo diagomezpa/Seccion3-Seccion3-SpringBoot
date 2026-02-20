@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diego.springboot.dependecyinjection.app.springboot_di.models.Product;
-import com.diego.springboot.dependecyinjection.app.springboot_di.services.ProductService;
+import com.diego.springboot.dependecyinjection.app.springboot_di.services.ProductServiceImpl;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/api")
 public class SomeController {
 
-    private ProductService productService = new ProductService();
+    private ProductServiceImpl productService = new ProductServiceImpl();
 
     @GetMapping
     public List<Product> list() {
