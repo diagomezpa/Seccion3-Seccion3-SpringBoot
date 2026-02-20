@@ -14,12 +14,26 @@ public class ProductService {
         return this.repository.findById(id);
     }
 
-    public List<Product> findAll() {
-        return this.repository.findAll().stream().map(p -> {
+    // public List<Product> findAll() { // el set no cumple con principio de inmutabilidad, se modifica el objeto original, no es recomendable
+    //     return this.repository.findAll().stream().map(p -> {
+    //         Double priceImp = p.getPrice() * 1.25d;
+    //         p.setPrice(priceImp.longValue());
+    //         return p;
+    //     }).collect(Collectors.toList());
+    // }
+
+    public List<Product> findAll() { // el map crea un nuevo objeto, no modifica el original, cumple con principio de inmutabilidad, es recomendable
+    return this.repository.findAll()
+        .stream()
+        .map(p -> {
             Double priceImp = p.getPrice() * 1.25d;
-            p.setPrice(priceImp.longValue());
-            return p;
-        }).collect(Collectors.toList());
-    }
+            return new Product(
+                p.getId(),
+                p.getName(),
+                priceImp.longValue()
+            );
+        })
+        .collect(Collectors.toList());
+}
 
 }
