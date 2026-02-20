@@ -1,6 +1,6 @@
 package com.diego.springboot.dependecyinjection.app.springboot_di.models;
 
-public class Product {
+public class Product implements Cloneable {
     private Long id;
     private String name;
     private Long price;
@@ -36,5 +36,23 @@ public class Product {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    // @Override
+    // public Product clone() {
+    //     try {
+    //         return (Product) super.clone();
+    //     } catch (CloneNotSupportedException e) {
+    //         throw new AssertionError();
+    //     }
+    // }
+
+    @Override
+    public Product clone() {
+        try {
+            return (Product) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Product(this.getId(), this.getName(), this.getPrice());
+        }
     }
 }

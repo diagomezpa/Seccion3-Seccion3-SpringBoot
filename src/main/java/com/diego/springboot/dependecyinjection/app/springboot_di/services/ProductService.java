@@ -27,11 +27,14 @@ public class ProductService {
         .stream()
         .map(p -> {
             Double priceImp = p.getPrice() * 1.25d;
-            return new Product(
-                p.getId(),
-                p.getName(),
-                priceImp.longValue()
-            );
+            // return new Product(
+            //     p.getId(),
+            //     p.getName(),
+            //     priceImp.longValue()
+            // );
+            Product clonedProduct = p.clone();
+            clonedProduct.setPrice(priceImp.longValue());
+            return clonedProduct; // se clona el objeto original, se modifica el precio del nuevo objeto, no se modifica el original, cumple con principio de inmutabilidad, es recomendable
         })
         .collect(Collectors.toList());
 }
