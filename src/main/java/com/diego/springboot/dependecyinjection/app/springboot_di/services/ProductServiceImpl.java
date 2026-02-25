@@ -19,6 +19,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     //@Autowired
+    //@Qualifier("productList") // esta anotacion se usa para especificar cual es la implementacion de la interfaz ProductRepository que se va a inyectar, en este caso se va a inyectar la implementacion ProductRepositoryImpl, si no se especifica esta anotacion, spring va a lanzar una excepcion indicando que hay varias implementaciones de la interfaz ProductRepository y no sabe cual inyectar, con esta anotacion, spring va a inyectar la implementacion especificada sin necesidad de modificar el código del controlador, lo que hace que el código sea más limpio y fácil de mantener, si queremos cambiar la implementación de ProductRepository, solo tenemos que cambiar el valor de esta anotación y spring se encargará de inyectar la nueva implementación sin necesidad de modificar el código del controlador
     private ProductRepository repository ;
 
     // @Autowired
@@ -41,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
     //     }).collect(Collectors.toList());
     // }
 
-     // por constructor, es la forma recomendada de inyectar dependencias, ya que permite declarar las dependencias de la clase de forma explícita, lo que facilita la lectura y el mantenimiento del código, además, permite inyectar dependencias finales, lo que mejora la seguridad del código, si una dependencia es final, no puede ser modificada después de ser inyectada, lo que garantiza que la clase siempre tenga una instancia válida de la dependencia
+     //por constructor, es la forma recomendada de inyectar dependencias, ya que permite declarar las dependencias de la clase de forma explícita, lo que facilita la lectura y el mantenimiento del código, además, permite inyectar dependencias finales, lo que mejora la seguridad del código, si una dependencia es final, no puede ser modificada después de ser inyectada, lo que garantiza que la clase siempre tenga una instancia válida de la dependencia
     public ProductServiceImpl(@Qualifier("productAlt") ProductRepository repository) {
         this.repository = repository;
     }
