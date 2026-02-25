@@ -11,7 +11,7 @@ import com.diego.springboot.dependecyinjection.app.springboot_di.models.Product;
 
 
 @Primary
-@Repository // un reporsitori es un mecanismo para encapsular el almacenamiento, recuperación y búsqueda de objetos, es una capa de abstracción entre la aplicación y la base de datos, se encarga de manejar la lógica de acceso a datos, en este caso es una implementación en memoria, pero en una aplicación real podría ser una implementación que acceda a una base de datos relacional o no relacional, se recomienda usar la anotación @Repository para marcar esta clase como un repositorio, esto permite a spring manejar las excepciones de acceso a datos y traducirlas a excepciones de spring, además de permitir la inyección de dependencias en esta clase si es necesario
+@Repository("productList") // un reporsitori es un mecanismo para encapsular el almacenamiento, recuperación y búsqueda de objetos, es una capa de abstracción entre la aplicación y la base de datos, se encarga de manejar la lógica de acceso a datos, en este caso es una implementación en memoria, pero en una aplicación real podría ser una implementación que acceda a una base de datos relacional o no relacional, se recomienda usar la anotación @Repository para marcar esta clase como un repositorio, esto permite a spring manejar las excepciones de acceso a datos y traducirlas a excepciones de spring, además de permitir la inyección de dependencias en esta clase si es necesario
 public class ProductRepositoryImpl implements ProductRepository {
 
     private List<Product> data;

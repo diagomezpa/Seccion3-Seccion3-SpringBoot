@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import com.diego.springboot.dependecyinjection.app.springboot_di.repositories.Pr
 public class ProductServiceImpl implements ProductService {
 
 
-    @Autowired
+    //@Autowired
     private ProductRepository repository ;
 
     // @Autowired
@@ -41,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
     // }
 
      // por constructor, es la forma recomendada de inyectar dependencias, ya que permite declarar las dependencias de la clase de forma explícita, lo que facilita la lectura y el mantenimiento del código, además, permite inyectar dependencias finales, lo que mejora la seguridad del código, si una dependencia es final, no puede ser modificada después de ser inyectada, lo que garantiza que la clase siempre tenga una instancia válida de la dependencia
-    public ProductServiceImpl(ProductRepository repository) {
+    public ProductServiceImpl(@Qualifier("productAlt") ProductRepository repository) {
         this.repository = repository;
     }
 
