@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import com.diego.springboot.dependecyinjection.app.springboot_di.models.Product;
 
@@ -13,12 +15,14 @@ import tools.jackson.databind.ObjectMapper;
 public class ProductRepositoyJson implements ProductRepository {
  private List<Product> list;
 
- public ProductRepositoyJson() {
+ 
 
-        ClassPathResource resource = new ClassPathResource("json/product.json");
+ public ProductRepositoyJson(Resource resource) {
+
+        //ClassPathResource resource = new ClassPathResource("json/product.json");
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            list = Arrays.asList(objectMapper.readValue(resource.getFile(), Product[].class));
+            list = Arrays.asList(objectMapper.readValue(resource.getInputStream(), Product[].class));
         } catch (IOException e) {
             e.printStackTrace();    
         }
