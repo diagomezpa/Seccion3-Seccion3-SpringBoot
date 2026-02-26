@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "laystation 5",
+        "price": 375
+    },
+    {
+        "id": 2,
+        "name": "Abrigo navy marino",
+        "price": 187
+    },
+    {
+        "id": 3,
+        "name": "Horno microondas",
+        "price": 250
+    },
+        {
+            "id": 4,
+            "name": "Cafetera express",
+            "price": 120
+        },
+        {
+            "id": 5,
+            "name": "Smart TV 55 pulgadas",
+            "price": 800
+        }
+]
