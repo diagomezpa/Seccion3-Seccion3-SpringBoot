@@ -7,11 +7,13 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.diego.springboot.dependecyinjection.app.springboot_di.models.Product;
 
 
 @Primary
+//@SessionScope // 
 //@RequestScope // HACE QUE YA no sea un singleton, cada vez que se inyecte esta clase en un controlador, se va a crear una nueva instancia de esta clase, esto es útil cuando queremos tener datos específicos para cada solicitud, por ejemplo, si queremos tener un contador de visitas para cada producto, podemos usar esta anotación para que cada vez que se inyecte esta clase en el controlador, se cree una nueva instancia de esta clase con un contador de visitas inicializado en cero, y cada vez que se acceda a un producto, se incremente el contador de visitas de ese producto en esa instancia de la clase, esto permite tener un contador de visitas específico para cada producto sin necesidad de usar una base de datos o una estructura de datos compartida entre todas las instancias de la clase
 @Repository("productList") // un reporsitori es un mecanismo para encapsular el almacenamiento, recuperación y búsqueda de objetos, es una capa de abstracción entre la aplicación y la base de datos, se encarga de manejar la lógica de acceso a datos, en este caso es una implementación en memoria, pero en una aplicación real podría ser una implementación que acceda a una base de datos relacional o no relacional, se recomienda usar la anotación @Repository para marcar esta clase como un repositorio, esto permite a spring manejar las excepciones de acceso a datos y traducirlas a excepciones de spring, además de permitir la inyección de dependencias en esta clase si es necesario
 public class ProductRepositoryImpl implements ProductRepository {
